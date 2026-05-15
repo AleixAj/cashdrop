@@ -46,7 +46,7 @@
             <div class="intro-stat"><span class="stat-n">6</span><span class="stat-l">preguntas</span></div>
             <div class="intro-stat"><span class="stat-n">1M€</span><span class="stat-l">en juego</span></div>
           </div>
-          <button class="btn-salas-primary" onclick="startGame()">
+          <button type="button" class="btn-salas-primary" id="btnStartIntro">
             <i class="bi bi-play-fill"></i> ¡Empezar!
           </button>
         </div>
@@ -93,7 +93,7 @@
           <div class="unplaced-status" id="unplacedStatus">
             <i class="bi bi-exclamation-circle"></i> 20 fajos sin colocar
           </div>
-          <button class="btn-salas-confirm" id="confirmBtn" onclick="confirmBet()" disabled>
+          <button type="button" class="btn-salas-confirm" id="confirmBtn" disabled>
             <i class="bi bi-lock-fill"></i> Confirmar apuesta
           </button>
         </div>
@@ -123,7 +123,7 @@
             </div>
             <p class="reveal-expl" id="revealExpl"></p>
             <div class="game-over-msg d-none" id="gameOverMsg">💀 ¡GAME OVER!</div>
-            <button class="btn-salas-next" id="nextBtn" onclick="nextQuestion()">
+            <button type="button" class="btn-salas-next" id="nextBtn">
               Siguiente <i class="bi bi-arrow-right"></i>
             </button>
           </div>
@@ -139,7 +139,7 @@
           <div class="end-amount" id="finalAmount">750.000 €</div>
           <div class="end-bundles" id="endBundles"></div>
           <p class="end-msg" id="endMsg">¡Muy buen resultado!</p>
-          <button class="btn-salas-primary" onclick="location.reload()">
+          <button type="button" class="btn-salas-primary" id="btnPlayAgain">
             <i class="bi bi-arrow-clockwise"></i> Jugar de nuevo
           </button>
         </div>

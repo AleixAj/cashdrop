@@ -126,7 +126,6 @@ function renderQuestion() {
       <div class="screen-panel" id="panel-${i}">
         <div class="screen-tv" id="tv-${i}"
              style="--scol:${col};--scol-a:${alpha}"
-             onclick="clickScreen(${i})"
              title="Haz clic para añadir un fajo">
           <span class="opt-letter">${letter}</span>
           <span class="opt-text">${escapeHtml(q.o[i])}</span>
@@ -136,18 +135,28 @@ function renderQuestion() {
           <div class="glass-footer">
             <span class="glass-amount" id="gamount-${i}">0 €</span>
             <div class="glass-controls">
-              <button class="gc-btn minus" id="gminus-${i}" onclick="adjustBundle(${i}, -1)">−</button>
-              <span  class="gc-count"      id="gcount-${i}" onclick="editCount(${i})" title="Clic para escribir cantidad">0</span>
-              <button class="gc-btn plus"  id="gplus-${i}"  onclick="adjustBundle(${i},  1)">+</button>
+              <button type="button" class="gc-btn minus" id="gminus-${i}">−</button>
+              <span  class="gc-count"      id="gcount-${i}" title="Clic para escribir cantidad">0</span>
+              <button type="button" class="gc-btn plus"  id="gplus-${i}">+</button>
             </div>
           </div>
           <div class="gc-quick-btns">
-            <button class="gc-btn-allin"  id="gallin-${i}"  onclick="allIn(${i})">All in</button>
-            <button class="gc-btn-clear"  id="gclear-${i}"  onclick="clearScreen(${i})">Quitar todo</button>
+            <button type="button" class="gc-btn-allin"  id="gallin-${i}">All in</button>
+            <button type="button" class="gc-btn-clear"  id="gclear-${i}">Quitar todo</button>
           </div>
         </div>
       </div>`;
   }).join('');
+
+  // ── Clicks (sin onclick en HTML: compatible con CSP estricta del hosting) ──
+  for (let i = 0; i < 4; i++) {
+    document.getElementById(`tv-${i}`)?.addEventListener('click', () => clickScreen(i));
+    document.getElementById(`gminus-${i}`)?.addEventListener('click', () => adjustBundle(i, -1));
+    document.getElementById(`gcount-${i}`)?.addEventListener('click', () => editCount(i));
+    document.getElementById(`gplus-${i}`)?.addEventListener('click', () => adjustBundle(i, 1));
+    document.getElementById(`gallin-${i}`)?.addEventListener('click', () => allIn(i));
+    document.getElementById(`gclear-${i}`)?.addEventListener('click', () => clearScreen(i));
+  }
 
   // ── Setup drag & drop zones ──
   for (let i = 0; i < 4; i++) {
@@ -672,3 +681,11 @@ function fmt(n) {
 
 function show(id) { document.getElementById(id)?.classList.remove('d-none'); }
 function hide(id) { document.getElementById(id)?.classList.add('d-none'); }
+
+function wireStaticUi() {
+  document.getElementById('btnStartIntro')?.addEventListener('click', () => startGame());
+  document.getElementById('confirmBtn')?.addEventListener('click', () => confirmBet());
+  document.getElementById('nextBtn')?.addEventListener('click', () => nextQuestion());
+  document.getElementById('btnPlayAgain')?.addEventListener('click', () => location.reload());
+}
+wireStaticUi();
