@@ -14,51 +14,13 @@ function shuffle(arr) {
   return copy;
 }
 
-// ═══════════════════════════════════════════════════════
-//  QUESTION POOL  (Cultura general + Actualidad + Geografía)
-// ═══════════════════════════════════════════════════════
-const qPool = {
-  facil: [
-    { p: "¿Cuál es el animal terrestre más rápido del mundo?",         o: ["León","Guepardo","Tigre","Antílope"],                                    c: 1, e: "El guepardo alcanza hasta 110 km/h en carreras cortas, más que cualquier otro animal terrestre." },
-    { p: "¿Quién pintó la 'Mona Lisa'?",                               o: ["Pablo Picasso","Vincent van Gogh","Leonardo da Vinci","Miguel Ángel"],   c: 2, e: "Leonardo da Vinci la pintó en el siglo XVI. Hoy se expone en el Museo del Louvre, en París." },
-    { p: "¿Cómo se llama el ratón más famoso de Disney?",              o: ["Donald","Goofy","Mickey","Pluto"],                                      c: 2, e: "Mickey Mouse fue creado en 1928 por Walt Disney. Su primer nombre iba a ser Mortimer, pero cambió." },
-    { p: "¿Qué planeta es conocido como el 'Planeta Rojo'?",           o: ["Mercurio","Marte","Júpiter","Venus"],                                   c: 1, e: "Marte recibe ese apodo por el óxido de hierro de su superficie, que le da un tono rojizo." },
-    { p: "¿Qué red social cambió su logo por una 'X'?",                o: ["Twitter","Facebook","Instagram","TikTok"],                              c: 0, e: "Twitter pasó a llamarse X tras el rebranding impulsado por Elon Musk en 2023." },
-    { p: "¿Qué empresa fabrica los iPhone?",                           o: ["Apple","Google","Samsung","Huawei"],                                    c: 0, e: "Apple lanzó el primer iPhone en 2007 y es desde entonces el mayor fabricante de teléfonos premium." },
-    { p: "¿En qué ciudad se celebraron los JJ.OO. de verano de 2024?", o: ["París","Londres","Tokio","Berlín"],                                     c: 0, e: "París acogió los Juegos Olímpicos de 2024, siendo la tercera vez que organiza los Juegos de verano." },
-    { p: "¿Cuál es la capital de Brasil?",                             o: ["Río de Janeiro","São Paulo","Brasilia","Salvador"],                     c: 2, e: "Brasilia es la capital desde 1960. Fue construida de cero para evitar concentrar el poder en Río." },
-    { p: "¿Qué país tiene forma de bota en el mapa?",                  o: ["Grecia","Italia","Chile","Portugal"],                                   c: 1, e: "Italia es famosa por su forma de bota, que parece patear la isla de Sicilia hacia el sur." },
-    { p: "¿En qué continente se encuentra Egipto?",                    o: ["Asia","Europa","África","Oceanía"],                                     c: 2, e: "Egipto está en el noreste de África, aunque la Península del Sinaí conecta geográficamente con Asia." },
-    { p: "¿Cuál es la capital oficial de Turquía?",                    o: ["Estambul","Ankara","Esmirna","Bursa"],                                  c: 1, e: "Desde 1923, la capital de Turquía es Ankara. Mucha gente confunde con Estambul, que es la más grande." },
-    { p: "¿Qué océano separa América de Europa?",                      o: ["Índico","Pacífico","Atlántico","Ártico"],                               c: 2, e: "El océano Atlántico es el segundo más grande del mundo y separa América de Europa y África." },
-  ],
-  media: [
-    { p: "¿De qué color es realmente una 'caja negra' de avión?",      o: ["Naranja","Gris","Azul","Negra"],                                       c: 0, e: "Son naranja brillante para facilitar su localización tras un accidente. El nombre viene de su función." },
-    { p: "¿Cuántos meses tienen exactamente 30 días?",                 o: ["3","4","2","5"],                                                       c: 1, e: "Abril, junio, septiembre y noviembre. Los otros meses tienen 31, excepto febrero con 28 o 29." },
-    { p: "¿Qué civilización construyó Machu Picchu?",                  o: ["Azteca","Maya","Inca","Olmeca"],                                       c: 2, e: "El Imperio Inca construyó Machu Picchu en el siglo XV. Fue descubierta por el mundo en 1911." },
-    { p: "¿Qué ciudad tiene el metro más antiguo del mundo?",          o: ["París","Nueva York","Londres","Berlín"],                               c: 2, e: "El metro de Londres abrió en 1863. París en 1900, Berlín en 1902 y Nueva York en 1904." },
-    { p: "¿Qué empresa es propietaria de WhatsApp?",                   o: ["Meta","Google","Apple","Telegram"],                                    c: 0, e: "Facebook (ahora Meta) compró WhatsApp en 2014 por unos 19.000 millones de dólares." },
-    { p: "¿Cuál es la película más taquillera de la historia?",        o: ["Avengers: Endgame","Titanic","Avatar","Star Wars VII"],                c: 2, e: "Avatar supera los 2.900M$ y recuperó el 1er puesto tras varios reestrenos. Endgame lo superó brevemente." },
-    { p: "¿Qué país es conocido como 'la tierra del sol naciente'?",   o: ["China","Japón","Corea del Sur","Tailandia"],                           c: 1, e: "Nippon (Japón en japonés) significa 'origen del sol'. Se debe a su posición al este de China." },
-    { p: "¿Qué país tiene mayor población actualmente?",               o: ["China","Estados Unidos","India","Indonesia"],                          c: 2, e: "India superó a China recientemente como el país más poblado, con más de 1.400 millones de habitantes." },
-    { p: "¿Cuál es el país más pequeño del mundo?",                    o: ["Mónaco","San Marino","Liechtenstein","Vaticano"],                      c: 3, e: "El Vaticano, con menos de 1 km², es el país más pequeño del mundo, enclavado en Roma." },
-    { p: "¿En qué país está situado el Taj Mahal?",                    o: ["Pakistán","Bangladés","India","Nepal"],                               c: 2, e: "El Taj Mahal está en Agra, India. Fue construido por el emperador Shah Jahan en honor a su esposa." },
-    { p: "¿Qué franquicia tecnológica domina el streaming global?",    o: ["Disney+","Netflix","Prime Video","HBO Max"],                          c: 1, e: "Netflix supera los 260 millones de suscriptores y sigue siendo líder indiscutible del streaming." },
-    { p: "¿Cuál es la capital de Australia?",                          o: ["Sídney","Melbourne","Canberra","Perth"],                              c: 2, e: "Canberra fue elegida como capital en 1908 como punto intermedio entre Sídney y Melbourne para evitar rivalidades." },
-  ],
-  dificil: [
-    { p: "¿Qué planeta del sistema solar tiene más satélites naturales?", o: ["Júpiter","Saturno","Urano","Neptuno"],                             c: 1, e: "Saturno lidera con más de 270 lunas conocidas. Su luna Titán incluso tiene atmósfera propia." },
-    { p: "¿Qué país tiene más pirámides en su territorio?",            o: ["Egipto","México","Sudán","Perú"],                                     c: 2, e: "Sudán supera las 200 pirámides de la antigua civilización nubia, más del doble que Egipto." },
-    { p: "¿Cuál es el órgano más grande del cuerpo humano?",           o: ["Hígado","Piel","Pulmones","Intestino delgado"],                       c: 1, e: "La piel cubre unos 2 m² en un adulto promedio. Es el órgano más grande y pesa entre 3 y 5 kg." },
-    { p: "¿Cuál es el metal más valioso del mundo por peso?",          o: ["Oro","Platino","Rodio","Paladio"],                                    c: 2, e: "El rodio puede superar los 10.000 $/onza por su rareza y su uso en catalizadores de coches." },
-    { p: "¿Qué país lidera la producción mundial de chips avanzados?", o: ["Taiwán","Corea del Sur","Estados Unidos","China"],                   c: 0, e: "TSMC (Taiwán) fabrica los chips más avanzados del mundo, haciendo a Taiwán estratégicamente crucial." },
-    { p: "¿Qué franquicia ha generado más dinero en la historia?",     o: ["Marvel","Star Wars","Pokémon","Harry Potter"],                       c: 2, e: "Pokémon supera los 100.000M€ en total contando juegos, cartas, series y merchandising global." },
-    { p: "¿Cuál es el desierto más grande del mundo?",                 o: ["Antártida","Gobi","Sahara","Kalahari"],                              c: 0, e: "La Antártida es el desierto más grande: recibe menos de 50 mm de precipitación anual. Un desierto frío." },
-    { p: "¿Qué país tiene el mayor número de islas del mundo?",        o: ["Filipinas","Indonesia","Suecia","Canadá"],                           c: 2, e: "Suecia tiene más de 200.000 islas, superando a países tropicales como Indonesia o Filipinas." },
-    { p: "¿Cuál es la capital de gobierno más alta del mundo?",        o: ["Quito (Ecuador)","La Paz (Bolivia)","Bogotá (Colombia)","Adís Abeba"], c: 1, e: "La Paz, sede del gobierno boliviano, está a 3.640 m sobre el nivel del mar. Los visitantes notan el aire." },
-    { p: "¿Con cuántos países hace frontera España?",                  o: ["2","3","4","5"],                                                     c: 3, e: "Portugal, Francia, Andorra, Marruecos (Ceuta y Melilla) y Reino Unido (Gibraltar). Son 5 países." },
-  ],
-};
+// Pool de preguntas: `js/questions-pool.js` (cultura general + geografía).
+
+/** Rondas por partida: 4 fáciles + 3 medias + 3 difíciles. */
+const ROUNDS_EASY = 4;
+const ROUNDS_MED = 3;
+const ROUNDS_HARD = 3;
+const ROUNDS_TOTAL = ROUNDS_EASY + ROUNDS_MED + ROUNDS_HARD;
 
 // ═══════════════════════════════════════════════════════
 //  GAME STATE
@@ -78,9 +40,9 @@ let game = {
 //  START
 // ═══════════════════════════════════════════════════════
 function startGame() {
-  const faciles   = shuffle(qPool.facil).slice(0, 2).map(q => ({ ...q, diff: 'facil'  }));
-  const medias    = shuffle(qPool.media).slice(0, 2).map(q => ({ ...q, diff: 'media'  }));
-  const dificiles = shuffle(qPool.dificil).slice(0, 2).map(q => ({ ...q, diff: 'dificil' }));
+  const faciles   = shuffle(qPool.facil).slice(0, ROUNDS_EASY).map(q => ({ ...q, diff: 'facil'  }));
+  const medias    = shuffle(qPool.media).slice(0, ROUNDS_MED).map(q => ({ ...q, diff: 'media'  }));
+  const dificiles = shuffle(qPool.dificil).slice(0, ROUNDS_HARD).map(q => ({ ...q, diff: 'dificil' }));
 
   game.questions = [...faciles, ...medias, ...dificiles];
   game.qIndex    = 0;
@@ -111,7 +73,7 @@ function renderQuestion() {
 
   // ── Top bar ──
   renderDots();
-  document.getElementById('qNum').textContent  = `Pregunta ${game.qIndex + 1} / 6`;
+  document.getElementById('qNum').textContent  = `Pregunta ${game.qIndex + 1} / ${ROUNDS_TOTAL}`;
   const diffLabels = { facil: '🟢 Fácil', media: '🟡 Media', dificil: '🔴 Difícil' };
   document.getElementById('qDiff').textContent = diffLabels[q.diff];
 
@@ -552,7 +514,7 @@ function editCount(screenIdx) {
     span.id        = `gcount-${screenIdx}`;
     span.textContent = val;
     span.title     = 'Clic para escribir cantidad';
-    span.onclick   = () => editCount(screenIdx);
+    span.addEventListener('click', () => editCount(screenIdx));
     input.replaceWith(span);
 
     refreshAllGlass();
@@ -596,12 +558,16 @@ function confirmBet() {
   const letter = LETTERS[correctIdx];
 
   const badge = document.getElementById('revealBadge');
+  const revealPanel = document.getElementById('revealPanel');
+  revealPanel?.classList.remove('result-correct', 'result-wrong');
   if (keptBundles > 0) {
     badge.textContent = '✅ ¡Correcto!';
     badge.className   = 'reveal-badge correct';
+    revealPanel?.classList.add('result-correct');
   } else {
     badge.textContent = '❌ ¡Incorrecto!';
     badge.className   = 'reveal-badge wrong';
+    revealPanel?.classList.add('result-wrong');
   }
 
   document.getElementById('revealAnswer').textContent     = `${letter} — ${q.o[correctIdx]}`;
@@ -614,18 +580,17 @@ function confirmBet() {
   const gameOverEl = document.getElementById('gameOverMsg');
   if (gameOverEl) gameOverEl.classList.toggle('d-none', game.bundles !== 0);
 
-  const isLast = game.qIndex >= 5 || game.bundles === 0;
+  const isLast = game.qIndex >= game.questions.length - 1 || game.bundles === 0;
   document.getElementById('nextBtn').innerHTML = isLast
     ? 'Ver resultado <i class="bi bi-trophy-fill"></i>'
     : 'Siguiente pregunta <i class="bi bi-arrow-right"></i>';
 
   show('revealPanel');
-  document.getElementById('revealPanel').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
 function nextQuestion() {
   game.qIndex++;
-  if (game.qIndex >= 6 || game.bundles === 0) {
+  if (game.qIndex >= game.questions.length || game.bundles === 0) {
     showEnd();
     return;
   }

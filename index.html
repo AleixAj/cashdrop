@@ -21,12 +21,10 @@
     <!-- Navbar -->
     <nav class="nav-bar">
       <div class="d-flex align-items-center gap-2">
-        <i class="bi bi-controller fs-4 text-warning"></i>
-        <span class="nav-logo">AJ GAMES</span>
+        <span class="nav-brand-icon" aria-hidden="true"></span>
+        <span class="nav-logo">ALEIX AJ</span>
       </div>
-      <div class="nav-buttons d-flex gap-2">
-        <button class="nav-btn active"><img src="img/CashDropIcon.png" class="nav-ruleta-icon" alt=""> CashDrop</button>
-      </div>
+      <img src="img/CashDropName.png" class="nav-title-logo" alt="Cash Drop" />
     </nav>
 
     <div class="salas-wrap">
@@ -43,7 +41,7 @@
           </p>
           <div class="intro-stats">
             <div class="intro-stat"><span class="stat-n">20</span><span class="stat-l">fajos</span></div>
-            <div class="intro-stat"><span class="stat-n">6</span><span class="stat-l">preguntas</span></div>
+            <div class="intro-stat"><span class="stat-n">10</span><span class="stat-l">preguntas</span></div>
             <div class="intro-stat"><span class="stat-n">1M€</span><span class="stat-l">en juego</span></div>
           </div>
           <button type="button" class="btn-salas-primary" id="btnStartIntro">
@@ -55,16 +53,11 @@
       <!-- ═══════════════ GAME ═══════════════ -->
       <section id="gameScreen" class="d-none">
 
-        <!-- Game title -->
-        <div class="text-center">
-          <img src="img/CashDropName.png" class="game-title-img game-title-img--sm" alt="Cash Drop" />
-        </div>
-
         <!-- Top bar -->
         <div class="salas-topbar">
           <div class="progress-dots" id="progressDots"></div>
           <div class="q-meta">
-            <span class="q-num" id="qNum">Pregunta 1 / 6</span>
+            <span class="q-num" id="qNum">Pregunta 1 / 10</span>
             <span class="q-diff" id="qDiff">🟢 Fácil</span>
           </div>
           <div class="top-money">
@@ -147,6 +140,7 @@
 
     </div><!-- /salas-wrap -->
 
+    <script src="js/questions-pool.js"></script>
     <script src="js/cashdrop.js"></script>
     <script src="js/footer.js"></script>
   </body>

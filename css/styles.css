@@ -109,18 +109,12 @@
   white-space: nowrap;
 }
 
-.nav-buttons {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
 .nav-bar {
   background: transparent;
   backdrop-filter: blur(10px);
   padding: 14px 22px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   gap: 10px;
   border-bottom: 3px solid var(--accent);
@@ -131,12 +125,46 @@
   box-sizing: border-box;
 }
 
+.nav-title-logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(42vw, 260px);
+  height: auto;
+  max-height: 54px;
+  transform: translate(-50%, -50%);
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(250, 204, 21, 0.22));
+  pointer-events: none;
+}
+
 .nav-ruleta-icon {
   width: 20px;
   height: 20px;
   object-fit: contain;
   image-rendering: pixelated;
   display: block;
+}
+
+.nav-brand-icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  display: block;
+  box-sizing: border-box;
+  /* Mismo degradado que .nav-logo; máscara luminancia = siluetas claras, fondo negro transparente */
+  background: linear-gradient(90deg, #facc15, #f97316);
+  -webkit-mask-image: url("../img/AJ.png");
+  mask-image: url("../img/AJ.png");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-source-type: luminance;
+  mask-type: luminance;
 }
 
 
@@ -1713,12 +1741,27 @@ h1 {
     width: 16px;
     height: 16px;
   }
+  .nav-brand-icon {
+    width: 34px;
+    height: 34px;
+  }
+  .nav-logo {
+    font-size: 1.45rem;
+  }
+  .nav-title-logo {
+    width: min(38vw, 190px);
+    max-height: 42px;
+  }
 }
 
 @media (max-width: 768px) {
   .nav-bar {
     padding: 12px 8px;
     gap: 6px;
+  }
+  .nav-title-logo {
+    width: min(34vw, 160px);
+    max-height: 36px;
   }
   .nav-btn {
     padding: 8px 12px;
